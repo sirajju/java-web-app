@@ -1,7 +1,6 @@
 package com.example;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
@@ -12,22 +11,25 @@ public class Auth extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Cookie[] cookie = request.getCookies();
-
-        if (cookie == null) {
+        if (!this.isLoggedIn(cookie)) {
             response.setStatus(402);
             response.sendRedirect("/login");
             return;
         }
+        super.service(request, response);
+    }
 
+    public boolean isLoggedIn(Cookie[] cookie) {
+        if (cookie == null) {
+            return false;
+        }
         for (Cookie item : cookie) {
             if ("sessionId".equals(item.getName())) {
-                if (!item.getValue().equals("12333")) {
-                    response.setStatus(402);
-                    response.sendRedirect("/login");
-                    return;
+                if (item.getValue().equals("12333")) {
+                    return true;
                 }
             }
         }
-        super.service(request, response);
+        return false;
     }
 }

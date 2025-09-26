@@ -10,11 +10,13 @@ public class Login extends HttpServlet {
 
         String logout = request.getParameter("logout");
         if ("true".equals(logout)) {
-            HttpSession session = request.getSession(false);
-            if (session != null) {
-                session.invalidate();
-            }
+            response.addCookie(new Cookie("sessionId", null));
             request.setAttribute("message", "You have been logged out successfully.");
+        }
+
+        if (new Auth().isLoggedIn(request.getCookies())) {
+            response.sendRedirect("/");
+            return;
         }
 
         request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
