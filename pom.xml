@@ -6,7 +6,7 @@
 
     <groupId>com.example</groupId>
     <artifactId>demo</artifactId>
-    <version>demo</version>
+    <version>1.0</version>
     <packaging>war</packaging>
 
     <properties>
@@ -28,7 +28,6 @@
     </distributionManagement>
 
     <dependencies>
-
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
@@ -48,4 +47,8 @@
             <version>1.2</version>
         </dependency>
     </dependencies>
+
+    <build>
+    <finalName>ROOT</finalName>
+    </build>
 </project>

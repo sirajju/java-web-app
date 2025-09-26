@@ -10,7 +10,7 @@ import javax.servlet.http.*;
 
 import org.json.JSONArray;
 
-public class Main extends HttpServlet {
+public class Main extends Auth {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -42,23 +42,8 @@ public class Main extends HttpServlet {
         response.setStatus(300);
         request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
     }
+
     protected String getRandomBearer() {
         return "Bearer " + Math.random();
-    }
-
-    protected void service(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        String method = request.getMethod();
-        String authHeader = request.getHeader("authorization");
-        System.out.println(authHeader);
-        if (authHeader == null || !authHeader.contains("authorized") || authHeader.isEmpty()) {
-            response.setStatus(402);
-            response.sendRedirect("/login");
-            return;
-        } else if (method.equals("GET")) {
-            doGet(request, response);
-            return;
-        }
-        response.getWriter().write("Method not allowedddddd" + authHeader);
     }
 }
