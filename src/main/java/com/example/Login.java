@@ -10,7 +10,9 @@ public class Login extends HttpServlet {
 
         String logout = request.getParameter("logout");
         if ("true".equals(logout)) {
-            response.addCookie(new Cookie("sessionId", null));
+            Cookie myCookie = new Cookie("sessionId", null);
+            myCookie.setMaxAge(0);
+            response.addCookie(myCookie);
             request.setAttribute("message", "You have been logged out successfully.");
         }
 

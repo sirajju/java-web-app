@@ -39,7 +39,7 @@ public class Main extends Auth {
         List<Object> todos = jsonArray.toList();
 
         request.setAttribute("todos", todos);
-        response.setStatus(300);
+        response.setStatus(200);
         request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
     }
 

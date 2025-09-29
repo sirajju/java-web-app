@@ -23,7 +23,7 @@ uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
     </div>
     <style>
       h4 {
-        color: red;
+        color: blue;
       }
     </style>
   </body>
