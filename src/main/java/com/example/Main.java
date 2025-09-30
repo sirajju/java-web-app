@@ -11,10 +11,8 @@ import javax.servlet.http.*;
 import org.json.JSONArray;
 
 public class Main extends Auth {
-    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         String apiUrl = "https://jsonplaceholder.typicode.com/todos/";
         StringBuilder responseBuilder = new StringBuilder();
 
@@ -39,7 +37,7 @@ public class Main extends Auth {
         List<Object> todos = jsonArray.toList();
 
         request.setAttribute("todos", todos);
-        request.setAttribute("message", "Welcome to home");
+        request.setAttribute("message", "Welcome to homeeee !");
         response.setStatus(200);
         request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
     }
