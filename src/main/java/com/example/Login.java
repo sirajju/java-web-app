@@ -13,7 +13,7 @@ public class Login extends HttpServlet {
             Cookie myCookie = new Cookie("sessionId", null);
             myCookie.setMaxAge(0);
             response.addCookie(myCookie);
-            request.setAttribute("message", "You have been logged out successfully.");
+            request.setAttribute("message", 'e');
         }
 
         if (new Auth().isLoggedIn(request.getCookies())) {
