@@ -1,19 +1,19 @@
 package com.example;
 
 import java.io.IOException;
-import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 public class Auth extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Cookie[] cookie = request.getCookies();
         if (!this.isLoggedIn(cookie)) {
-            response.setStatus(402);
-            response.sendRedirect("/login");
+            response.setStatus(302);
+            response.sendRedirect(request.getContextPath() + "/login");
             return;
         }
         super.service(request, response);

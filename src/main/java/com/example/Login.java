@@ -1,8 +1,8 @@
 package com.example;
 
-import javax.servlet.http.*;
+import jakarta.servlet.http.*;
 import java.io.IOException;
-import javax.servlet.*;
+import jakarta.servlet.*;
 
 public class Login extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -13,11 +13,11 @@ public class Login extends HttpServlet {
             Cookie myCookie = new Cookie("sessionId", null);
             myCookie.setMaxAge(0);
             response.addCookie(myCookie);
-            request.setAttribute("message", 'e');
+            request.setAttribute("message", "Logged out successfully");
         }
 
         if (new Auth().isLoggedIn(request.getCookies())) {
-            response.sendRedirect("/");
+            response.sendRedirect(request.getContextPath() + "/");
             return;
         }
 
