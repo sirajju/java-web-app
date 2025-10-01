@@ -9,28 +9,18 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import org.json.JSONArray;
 
-import java.util.logging.FileHandler;
-import java.util.logging.Logger;
 
 public class Main extends Auth {
     protected RequestDispatcher jsp;
-    Logger logger;
+    Logger logger = new Logger();
 
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
 
-        logger = Logger.getLogger(getServletName());
+        // logger = Logger.getLogger(getServletName());
+        // logger.addHandler(new StreamHandler(System.out, new SimpleFormatter()));
 
-        try {
-            File fileObj = new File("./logs/myapp.log");
-            if (!fileObj.exists())
-                fileObj.createNewFile();
-            FileHandler fh = new FileHandler("./logs/myapp.log");
-            logger.addHandler(fh);
-        } catch (Exception e) {
-            throw new ServletException("Error while reading the log file");
-        }
         logger.info("Init -> Reading index file");
         ServletContext context = config.getServletContext();
         jsp = context.getRequestDispatcher("/WEB-INF/index.jsp");
