@@ -19,6 +19,7 @@ public class Main extends Auth {
         Logger.info("Init -> Reading index file");
         ServletContext context = config.getServletContext();
         jsp = context.getRequestDispatcher("/WEB-INF/index.jsp");
+        Cache.set("test_key", "test_value");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
