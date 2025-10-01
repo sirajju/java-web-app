@@ -4,6 +4,7 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URI;
 import java.util.List;
+
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import org.json.JSONArray;
@@ -13,11 +14,19 @@ import java.util.logging.Logger;
 
 public class Main extends Auth {
     protected RequestDispatcher jsp;
-    Logger logger = Logger.getLogger(getServletName());
+    Logger logger;
 
+    @Override
     public void init(ServletConfig config) throws ServletException {
+        super.init(config);
+
+        logger = Logger.getLogger(getServletName());
+
         try {
-            FileHandler fh = new FileHandler("myapp.log");
+            File fileObj = new File("./logs/myapp.log");
+            if (!fileObj.exists())
+                fileObj.createNewFile();
+            FileHandler fh = new FileHandler("./logs/myapp.log");
             logger.addHandler(fh);
         } catch (Exception e) {
             throw new ServletException("Error while reading the log file");
@@ -58,7 +67,7 @@ public class Main extends Auth {
         List<Object> todos = jsonArray.toList();
 
         request.setAttribute("todos", todos);
-        request.setAttribute("message", "Welcome to homeeee !");
+        request.setAttribute("message", "Welcome to homeeeeeeee !");
         response.setStatus(200);
         jsp.forward(request, response);
     }
