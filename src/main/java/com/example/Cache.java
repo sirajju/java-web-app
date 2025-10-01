@@ -3,7 +3,7 @@ package com.example;
 import redis.clients.jedis.Jedis;
 
 public class Cache {
-    private static Jedis jedis = new Jedis("localhost");
+    private static Jedis jedis = new Jedis("redis://localhost:6379");
 
     public static String get(String key) {
         String value = jedis.get(key);
