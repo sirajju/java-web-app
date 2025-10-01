@@ -18,9 +18,6 @@ public class Main extends Auth {
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
 
-        // logger = Logger.getLogger(getServletName());
-        // logger.addHandler(new StreamHandler(System.out, new SimpleFormatter()));
-
         logger.info("Init -> Reading index file");
         ServletContext context = config.getServletContext();
         jsp = context.getRequestDispatcher("/WEB-INF/index.jsp");
