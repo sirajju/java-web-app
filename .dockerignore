@@ -1,0 +1,36 @@
+# Maven
+target/
+!target/*.jar
+!target/*.war
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.iws
+*.ipr
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Local repository (not needed in container)
+local-repo/
+
+# Logs
+*.log
+
+# Docker
+Dockerfile
+docker-compose.yml
+build.sh
+build.ps1
+build.bat
+
+# Documentation
+README.md
+*.md
