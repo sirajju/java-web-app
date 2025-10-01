@@ -9,16 +9,14 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import org.json.JSONArray;
 
-
 public class Main extends Auth {
     protected RequestDispatcher jsp;
-    Logger logger = new Logger();
 
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
 
-        logger.info("Init -> Reading index file");
+        Logger.info("Init -> Reading index file");
         ServletContext context = config.getServletContext();
         jsp = context.getRequestDispatcher("/WEB-INF/index.jsp");
     }
@@ -28,7 +26,7 @@ public class Main extends Auth {
         String apiUrl = "https://jsonplaceholder.typicode.com/todos/";
         StringBuilder responseBuilder = new StringBuilder();
 
-        logger.info("Requesting to todos");
+        Logger.info("Requesting to todos");
 
         try {
             HttpURLConnection connection = (HttpURLConnection) new URI(apiUrl).toURL().openConnection();
@@ -42,11 +40,11 @@ public class Main extends Auth {
             reader.close();
             connection.disconnect();
         } catch (Exception e) {
-            logger.severe("Error while requesting todo");
+            Logger.severe("Error while requesting todo");
             throw new ServletException(e);
         }
 
-        logger.warning("Not configured path level routes");
+        Logger.warning("Not configured path level routes");
 
         String fileData = Utils.readUtilFile("/todos.json");
         JSONArray jsonArray = new JSONArray(fileData.toString());
