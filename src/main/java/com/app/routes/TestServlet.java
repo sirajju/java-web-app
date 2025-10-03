@@ -1,4 +1,4 @@
-package com.example;
+package com.app.routes;
 
 import java.io.*;
 import jakarta.servlet.*;

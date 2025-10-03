@@ -1,4 +1,4 @@
-package com.example;
+package com.app.services;
 
 public class Logger {
     private static enum Color {

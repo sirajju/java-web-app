@@ -1,4 +1,4 @@
-package com.example;
+package com.app.routes;
 
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -9,6 +9,11 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import org.json.JSONArray;
 
+import com.app.utils.Util;
+import com.app.services.Auth;
+import com.app.services.Cache;
+import com.app.services.Logger;;
+
 public class Main extends Auth {
     protected RequestDispatcher jsp;
 
@@ -18,7 +23,7 @@ public class Main extends Auth {
 
         Logger.info("Init -> Reading index file");
         ServletContext context = config.getServletContext();
-        jsp = context.getRequestDispatcher("/WEB-INF/index.jsp");
+        jsp = Util.GetIndexPage(context);
         Cache.set("test_key", "test_value");
     }
 
@@ -47,7 +52,7 @@ public class Main extends Auth {
 
         Logger.warning("Not configured path level routes");
 
-        String fileData = Utils.readUtilFile("/todos.json");
+        String fileData = Util.readResourceFile("/todos.json");
         JSONArray jsonArray = new JSONArray(fileData.toString());
 
         List<Object> todos = jsonArray.toList();

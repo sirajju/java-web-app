@@ -7,17 +7,17 @@
 
     <servlet>
         <servlet-name>Main</servlet-name>
-        <servlet-class>com.example.Main</servlet-class>
+        <servlet-class>com.example.routes.Main</servlet-class>
     </servlet>
 
     <servlet>
         <servlet-name>Test</servlet-name>
-        <servlet-class>com.example.TestServlet</servlet-class>
+        <servlet-class>com.example.routes.TestServlet</servlet-class>
     </servlet>
 
      <servlet>
         <servlet-name>Login</servlet-name>
-        <servlet-class>com.example.Login</servlet-class>
+        <servlet-class>com.example.routes.Login</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -37,6 +37,6 @@
 
     <error-page>
         <error-code>404</error-code>
-        <location>/WEB-INF/error.html</location>
+        <location>/WEB-INF/pages/error.html</location>
     </error-page>
 </web-app>

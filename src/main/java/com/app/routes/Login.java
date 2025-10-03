@@ -1,7 +1,11 @@
-package com.example;
+package com.app.routes;
 
 import jakarta.servlet.http.*;
 import java.io.IOException;
+
+import com.app.services.Auth;
+import com.app.utils.Util;
+
 import jakarta.servlet.*;
 
 public class Login extends HttpServlet {
@@ -21,7 +25,7 @@ public class Login extends HttpServlet {
             return;
         }
 
-        request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+        Util.GetLoginPage(getServletContext()).forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -37,7 +41,7 @@ public class Login extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/");
         } else {
             request.setAttribute("error", "Invalid username or password");
-            request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/pages/login.jsp").forward(request, response);
         }
     }
 }
